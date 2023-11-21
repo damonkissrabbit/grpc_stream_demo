@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package calculator;
+
+service Calculator {
+  rpc ProcessRequests (stream Request) returns (stream Response);
+}
+
+message Request {
+  int32 num1 = 1;
+  int32 num2 = 2;
+}
+
+message Response {
+  int32 result = 1;
+}
