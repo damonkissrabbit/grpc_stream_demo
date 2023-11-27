@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10\x63\x61lculator.proto\x12\ncalculator\"%\n\x07Request\x12\x0c\n\x04num1\x18\x01 \x01(\x05\x12\x0c\n\x04num2\x18\x02 \x01(\x05\"\x1a\n\x08Response\x12\x0e\n\x06result\x18\x01 \x01(\x05\x32N\n\nCalculator\x12@\n\x0fProcessRequests\x12\x13.calculator.Request\x1a\x14.calculator.Response(\x01\x30\x01\x62\x06proto3'
+  serialized_pb=b'\n\x10\x63\x61lculator.proto\x12\ncalculator\"\x19\n\x07Request\x12\x0e\n\x06kwargs\x18\x01 \x01(\t\"\x1a\n\x08Response\x12\x0e\n\x06result\x18\x01 \x01(\x05\x32J\n\nCalculator\x12<\n\x0fProcessRequests\x12\x13.calculator.Request\x1a\x14.calculator.Responseb\x06proto3'
 )
 
 
@@ -34,16 +34,9 @@ _REQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='num1', full_name='calculator.Request.num1', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='num2', full_name='calculator.Request.num2', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='kwargs', full_name='calculator.Request.kwargs', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -60,7 +53,7 @@ _REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=32,
-  serialized_end=69,
+  serialized_end=57,
 )
 
 
@@ -91,8 +84,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=71,
-  serialized_end=97,
+  serialized_start=59,
+  serialized_end=85,
 )
 
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
@@ -122,8 +115,8 @@ _CALCULATOR = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=99,
-  serialized_end=177,
+  serialized_start=87,
+  serialized_end=161,
   methods=[
   _descriptor.MethodDescriptor(
     name='ProcessRequests',

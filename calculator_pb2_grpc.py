@@ -14,7 +14,7 @@ class CalculatorStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ProcessRequests = channel.stream_stream(
+        self.ProcessRequests = channel.unary_unary(
                 '/calculator.Calculator/ProcessRequests',
                 request_serializer=calculator__pb2.Request.SerializeToString,
                 response_deserializer=calculator__pb2.Response.FromString,
@@ -24,7 +24,7 @@ class CalculatorStub(object):
 class CalculatorServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ProcessRequests(self, request_iterator, context):
+    def ProcessRequests(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,7 +33,7 @@ class CalculatorServicer(object):
 
 def add_CalculatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ProcessRequests': grpc.stream_stream_rpc_method_handler(
+            'ProcessRequests': grpc.unary_unary_rpc_method_handler(
                     servicer.ProcessRequests,
                     request_deserializer=calculator__pb2.Request.FromString,
                     response_serializer=calculator__pb2.Response.SerializeToString,
@@ -49,7 +49,7 @@ class Calculator(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ProcessRequests(request_iterator,
+    def ProcessRequests(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,7 +59,7 @@ class Calculator(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/calculator.Calculator/ProcessRequests',
+        return grpc.experimental.unary_unary(request, target, '/calculator.Calculator/ProcessRequests',
             calculator__pb2.Request.SerializeToString,
             calculator__pb2.Response.FromString,
             options, channel_credentials,
